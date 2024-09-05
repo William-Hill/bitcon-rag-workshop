@@ -21,20 +21,53 @@ This repository contains a simple LangChain-based chat application that generate
    pip install -r requirements.txt
    ```
 
-4. Install Ollama and download the Llama 3 model:
+4. Get a Groq API Key:
+   - Sign up for an account at [Groq](https://www.groq.com/)
+   - Generate an API key from your account dashboard
+
+5. Create a `.env` file in the project root and add your Groq API key:
+   ```
+   GROQ_API_KEY=your_api_key_here
+   ```
+
+6. Install Ollama:
    - Follow the instructions at [Ollama's official website](https://ollama.ai/) to install Ollama for your operating system.
-   - Run the following command to download the Llama 3 model:
+   - Run the following command to download the required models:
      ```
      ollama pull llama3
+     ollama pull nomic-embed-text
      ```
 
-5. Run the application:
+7. Populate the ChromaDB database:
    ```
-   python 1_langchain_chat.py
+   python 3_populate_database.py
    ```
 
-6. Enter a topic when prompted, and the application will generate a joke about that topic.
+## Tools and Libraries Used
 
-## Note
+1. **Ollama**: A local LLM runner that allows you to use various open-source models.
 
-Make sure you have Python 3.7 or later installed on your system.
+2. **CrewAI**: A framework for building AI agents that can work together to accomplish tasks.
+
+3. **ChromaDB**: A vector database used for efficient similarity search in the NBA CBA document.
+
+4. **Groq**: A cloud AI platform used for accessing powerful language models.
+
+5. **LangChain**: A framework for developing applications powered by language models.
+
+## Available Scripts
+
+- `1_langchain_chat.py`: A simple chat interface using LangChain and Ollama.
+- `2_langchain_chat_cba.py`: A streaming chat interface for querying the NBA CBA.
+- `3_populate_database.py`: Script to populate the ChromaDB with NBA CBA data.
+- `4_nba_rag.py`: A Retrieval-Augmented Generation (RAG) system for querying the NBA CBA.
+- `6_nba_agent_rag.py`: An agent-based system using CrewAI for retrieving NBA all-time leader statistics.
+
+## Usage
+
+Run the desired script using Python. For example:
+
+```
+python 1_langchain_chat.py
+```
+
